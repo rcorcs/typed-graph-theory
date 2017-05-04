@@ -1,0 +1,1621 @@
+%% This is file `elsarticle-template-1-num.tex',
+%%
+%% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+%\usepackage{epsfig,amsfonts,amsthm,amssymb,latexsym,amsmath}
+\usepackage{centernot}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\usepackage{color}
+
+\usepackage[section]{placeins}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers after \end{frontmatter}.
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+%% natbib.sty is loaded by default. However, natbib options can be
+%% provided with \biboptions{...} command. Following options are
+%% valid:
+
+%%   round  -  round parentheses are used (default)
+%%   square -  square brackets are used   [option]
+%%   curly  -  curly braces are used      {option}
+%%   angle  -  angle brackets are used    <option>
+%%   semicolon  -  multiple citations separated by semi-colon
+%%   colon  - same as semicolon, an earlier confusion
+%%   comma  -  separated by comma
+%%   numbers-  selects numerical citations
+%%   super  -  numerical citations as superscripts
+%%   sort   -  sorts multiple citations according to order in ref. list
+%%   sort&compress   -  like sort, but also compresses numerical citations
+%%   compress - compresses without sorting
+%%
+%% \biboptions{comma,round}
+
+% \biboptions{}
+
+\journal{Discrete Mathematics}
+
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+
+\newcommand\tyv[2]{#1\!\!:\!\!#2}
+\newcommand\subgraph{\subseteq}
+
+\newcommand{\Image}{\mathrm{Im}}
+
+\newcommand{\etal}{et~al.}
+
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+\title{Typed Graph Theory\\Extending graphs with type systems}
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for the associated footnote;
+%% use the fnref command within \author or \address for footnotes;
+%% use the fntext command for the associated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for the associated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%%
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \address{Address\fnref{label3}}
+%% \fntext[label3]{}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{<author name>}
+%% \address[label1]{<address>}
+%% \address[label2]{<address>}
+
+%\tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+
+%% Group authors per affiliation:
+\author{Rodrigo C. O. Rocha}
+\address{School of Informatics\\University of Edinburgh\\Scotland, UK\\r.rocha@ed.ac.uk}
+%\fntext[myfootnote]{Since 1880.}
+
+%% or include affiliations in footnotes:
+%\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+%\ead[url]{www.elsevier.com}
+
+%\author[mysecondaryaddress]{Global Customer Service\corref{mycorrespondingauthor}}
+%\cortext[mycorrespondingauthor]{Corresponding author}
+%\ead{support@elsevier.com}
+
+%\address[mymainaddress]{1600 John F Kennedy Boulevard, Philadelphia}
+%\address[mysecondaryaddress]{360 Park Avenue South, New York}
+
+\begin{abstract}
+In this paper, we propose \textit{typed graph theory},
+a generalisation of graph theory by extending
+graphs with type systems.
+Type theory, as a study of type systems,
+was originally developed as a formal system in logics.
+In the proposed typed graph theory, every vertex has a type
+and operations are restricted to vertices of a certain type.
+We revisit core concepts in graph theory, where
+new interesting properties emerge due to the proposed
+extension with type systems.
+\end{abstract}
+
+\begin{keyword}
+graph theory\sep type theory\sep type systems\sep typed graphs
+\MSC[2010] 05C60\sep 05C15\sep 05C69\sep 05C05
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+\section{Introduction}
+
+In this paper, we extend the concept of a graph with type systems,
+called \textit{typed graphs}.
+In particular, we revisit several well-known graph properties and operations
+where new interesting properties emerge due to the proposed
+extension with type systems.
+The proposed extension to graph theory with type systems,
+that we call \textit{typed graph theory}, is a generalisation of
+graph theory, and we assure to keep the generalisation
+consistent throughout the paper.
+
+Type systems are subject of study in type theory and programming languages.
+In a system of type theory, each term has a type and operations are restricted
+to terms of a certain type~\cite{russell1908,church1940}.
+Type theory was initially proposed by Bertrand Russel~\cite{russell1908},
+and further developed by others such as Whitehead and Hilbert,
+in order to address paradoxes in formal logics and rewriting systems.
+Afterwards, Alonzo Church~\cite{church1940} developed
+simply typed $\lambda$-calculus which
+is a typed formalism based on $\lambda$-calculus and 
+simple type theory.
+In Section~\ref{sec:substitution} we define
+a substitution rule with a similar concept to the one used by Church~\cite{church1940}.
+
+%This theoretical concept of typed graphs have been implicitly used in
+%many different areas\footnote{
+%Typed trees have already been explicitly applied in the area of compiler optimizations
+%in computer science, where it was initially developed by the author.
+%}.
+%However, in this paper we formalize and explore the general concept
+%of typed graphs in a more abstract and thorough manner.
+%We suggest some possible applications of typed graphs
+%in order to highlight its theoretical importance
+%from the perspective of supporting those possible applications.
+%In computer science, for example, in compiler construction
+%we have the following implicit instances of typed graphs:
+%call graphs are used in different analysis and optimizations,
+%where vertices are functions and functions can have different types;
+%data dependence graph where vertices are typed data values
+%and the types may differ for example due to type casting;
+%typed graphs can also be used to model constant folding,
+%simplification of constant expressions,
+%if we consider vertices of types \textit{constant} and \textit{non-constant}.
+%It can also be applied to other areas such as social networks where
+%vertices are individuals and types may represent different niches or communities
+%with common interests or goals, or perhaps to neural networks,
+%for combining networks with different purposes.
+
+\section{Typed graphs}
+
+In this section, we define typed graphs as undirected graphs extended with type systems,
+however, these concepts can be easily extended to directed graphs.
+
+\begin{definition}
+Let $T$ be a non-empty set of types
+and let $L$ be a set of labels\footnote{Usually we can consider that $L$ is the set of
+natural number $\mathbf{N}$.}.
+We say that $G = (V,E,T)$ is a typed graph if $(V,E)$ is a graph with
+vertex-set $V \subseteq L\times T$ and edge-set $E \subseteq V\times V$.
+\end{definition}
+
+We will denote vertices $(v_1, \tau_1) \in V$ by $\tyv{v_1}{\tau_1}$ and edges by $\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}$.
+Notice that two distinct vertices $\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2} \in V$ have $v_1 \neq v_2$ but their types $\tau_1$ and $\tau_2$ can be the same.
+A homogeneous graph $G$ of type $\tau$ is a typed graph $G = (V,E,T)$ where $T = \{\tau\}$ and therefore all vertices in $V$ have type $\tau$.
+Similarly, a \textit{singleton} graph of type $\tau$ is a graph defined as $G = (\{\tyv{v}{\tau}\}, \emptyset, \{\tau\})$.
+Graphs in classic graph theory are equivalent to homogeneous typed graphs and thus just special cases of typed graphs.
+%This type system, described as typed vertices, creates useful
+%restrictions to graph operations (e.g. edge contraction) and relations
+%(e.g. isomorphism), as we will discuss further in the remaining of this section.
+
+\begin{definition}[Subgraph]
+Let $G_1 = (V_1,E_1,T_1)$ be a typed graph.
+$G_2 = (V_2,E_2,T_2)$ is a typed subgraph of $G_1$,
+denoted by $G_2 \subgraph G_1$,
+if and only if $V_2 \subseteq V_1$,
+$E_2 \subseteq E_1$ and $T_2 \subseteq T_1$.
+\end{definition}
+
+Similar to the definitions of vertex-induced subgraph and
+edge-induced subgraph, we also define \textit{type-induced subgraph},
+see Definition~\ref{def:typeindsubgraph}.
+
+\begin{definition}[Type-induced subgraph]\label{def:typeindsubgraph}
+Let $G = (V,E,T)$ be a typed graph
+and $T'\subseteq T$.
+Define the type-induced subgraph of $G$,
+denoted by $G[T']$, as the typed subgraph $(V',E',T')$
+of $G$ such that
+$V' = \{ \tyv{v}{\tau}\in V| \tau\in T'\}$
+and
+$E' = \{\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}\in E| \tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\in V'\}$.
+\end{definition}
+
+\begin{definition}[Isomorphism]
+Let $G_1 = (V_1,E_1,T_1)$ and $G_2 = (V_2,E_2,T_2)$ be typed graphs,
+with $V_1 \subseteq L_1\times T_1$ and $V_2 \subseteq L_2\times T_2$.
+The two typed graphs $G_1$ and $G_2$ are isomorphic, denoted $G_1 \simeq G_2$,
+if and only if there are bijections $\phi:L_1 \rightarrow L_2$ and $\psi:T_1 \rightarrow T_2$
+such that
+$V_2 = \{\tyv{\phi(v_i)}{\psi(\tau_i)}|\tyv{v_i}{\tau_i}\in V_1\}$ and
+$\forall \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E_1,\{\tyv{\phi(v_i)}{\psi(\tau_i)}, \tyv{\phi(v_j)}{\psi(\tau_j)}\}\in E_2$.
+\end{definition}
+
+Whilst both vertex and edge deletion are type-independent operations,
+vertex and edge contractions are type-dependent operations in
+typed graphs. As we formally define below,
+vertex contraction is well-defined only for pairs of vertices of the same type
+and, similarly, edge contraction is well-defined only for edges with endpoints of the same type.
+
+\begin{definition}[Vertex contraction]
+Let $G = (V,E,T)$ be a typed graph
+and $\tyv{v_i}{\tau},\tyv{v_j}{\tau}\in V$ are vertices of the same type $\tau$.
+Let $\phi$ be a function which maps every vertex in $V\setminus\{\tyv{v_i}{\tau}, \tyv{v_j}{\tau}\}$ to itself, and otherwise,
+maps it to a new vertex $\tyv{w}{\tau}$.
+The contraction of vertices $\{\tyv{v_i}{\tau}, \tyv{v_j}{\tau}\}$ results in a new typed graph
+$G'=(V',E',T)$,
+where $V'=(V\setminus\{\tyv{v_i}{\tau}, \tyv{v_j}{\tau}\})\cup\{\tyv{w}{\tau}\}$ and $E'$ is defined with a correspondence to $E$ such that
+for every $v\in V$, $v'=\phi(v)\in V'$ is incident to an edge $e'\in E'$ if and only if, the corresponding edge, $e\in E$ is incident to $v$ in $G$.
+\end{definition}
+
+\begin{definition}[Edge contraction]
+Let $G = (V,E,T)$ be a typed graph
+containing an edge $\varepsilon=\{\tyv{v_i}{\tau}, \tyv{v_j}{\tau}\}$,
+with vertices of the same type $\tau$.
+Let $\phi$ be a function which maps every vertex in $V\setminus\{\tyv{v_i}{\tau}, \tyv{v_j}{\tau}\}$ to itself, and otherwise,
+maps it to a new vertex $\tyv{w}{\tau}$.
+The contraction of $\varepsilon$ results in a new typed graph
+$G'=(V',E',T)$,
+where $V'=(V\setminus\{\tyv{v_i}{\tau}, \tyv{v_j}{\tau}\})\cup\{\tyv{w}{\tau}\}$ and $E'$ is defined with a correspondence to $E\setminus\{\varepsilon\}$ such that
+for every $v\in V$, $v'=\phi(v)\in V'$ is incident to an edge $e'\in E'$ if and only if, the corresponding edge, $e\in E\setminus\{\varepsilon\}$ is incident to $v$ in $G$.
+\end{definition}
+
+\begin{definition}[Reduced normal form]
+A typed graph is in the reduced normal form if and only if for any given edge $\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$,
+we have $\tau_i \neq \tau_j$.
+\end{definition}
+
+If a typed graph is not in the reduced normal form, its reduced normal form can be obtained by
+repeatedly contracting edges with endpoints of the same type, until no further 
+edge contraction is possible.
+Corollary~\ref{cor:uniquereducedgraph} shows that the reduced normal form of a typed graph is unique.
+Denote by $\Re_G$ the reduced normal form of a typed graph $G$.
+Theorem~\ref{theorem:noreduction}, that follows immediately from the definition,
+states that if $G$ is in the reduced normal form then $\Re_G\simeq G$
+and no further reduction is possible.
+
+\begin{theorem}\label{theorem:noreduction}
+If a typed graph is in the reduced normal form,
+no reduction by edge contration is possible.
+\end{theorem}
+\begin{proof}
+Follows immediately from the definition that
+a graph in the reduced normal form has no
+edge with both endpoints of the same type.
+\end{proof}
+
+\begin{theorem}\label{theorem:reducedsubgraph}
+If $G$ is a typed graph in the reduced normal form
+and $H$ is a subgraph of $G$, then
+$H$ is in the reduced normal form.
+\end{theorem}
+\begin{proof}
+Let $G = (V,E,T)$ be a typed graph in the reduced normal form
+and $H = (V',E',T')$ such that $H \subgraph G$.
+By definition, $\nexists \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\} \in E$
+such that $\tau_i=\tau_j$.
+Because $E'\subseteq E$ we know that $H$ is also in the reduced normal form.
+\end{proof}
+
+\begin{definition}[Homogeneous connected components]\label{def:connectedcomponent}
+Let $G = (V,E,T)$ be a typed graph.
+Define a relation $ \sim $ on $V$ as follows: for all $\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j} \in V$,
+define $\tyv{v_i}{\tau_i} \sim \tyv{v_j}{\tau_j}$ if and only if $\tau_i = \tau_j$ and there is at least one
+homogeneous path from $\tyv{v_i}{\tau_i}$ to $\tyv{v_j}{\tau_j}$,
+where all vertices in the path have the same type $\tau_i$.
+The relation $\sim$ is an equivalence relation.
+The subgraphs of $G$ induced by the equivalence classes of $\sim $ are
+called \textit{homogeneous connected components} of $G$.
+\end{definition}
+
+\begin{theorem}\label{theorem:ETCCequiv}
+Let $G = (V,E,T)$ be a typed graph
+and $S$ be the set of homogeneous connected components of $G$.
+Let $G' = (V',E',T)$ be the graph consisting of the homogeneous connected components of $G$ as vertices, i.e.
+$V' = \{\tyv{H}{\tau}|H\in S \wedge T(H) = \{\tau\} \}$, and
+$E'$ is the set of edges for which $\{\tyv{H_1}{\tau_1},\tyv{H_2}{\tau_2}\}\in E'$
+implies that $H_1,H_2\in S$, with $H_1\neq H_2$, and $\exists \{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}\in E$
+with $\tyv{v_1}{\tau_1}\in V(H_1)$ and $\tyv{v_2}{\tau_2}\in V(H_2)$.
+Therefore $G'$ is isomorphic to $\Re_G$.
+\end{theorem}
+\begin{proof}
+Let $H\in S$. We have that the reduced normal form of $H$ is a \textit{singleton} typed graph,
+i.e., $\Re_H \simeq (\{\tyv{w}{\tau}\}, \emptyset, \{\tau\})$,
+since, by definition, $H$ is a connected graph and
+$\forall \tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2} \in V(H)$, $\tau_1=\tau_2$.
+Therefore $\Re_H$ contracts all edges of $H$, resulting in the \textit{singleton} typed graph,
+regardless of the order the edges are contracted.
+The resulting contracted \textit{singleton} typed graph corresponds to the
+vertex $\tyv{H}{\tau}$ in the typed graph $G'$.
+However, edges of $G$ with endpoints of different types are not contracted by $\Re_G$
+and by definition they also belong to different homogeneous connected components
+of $G$, therefore belonging to both $G'$ and $\Re_G$.
+\end{proof}
+
+\begin{corollary}[The reduced normal form uniqueness]\label{cor:uniquereducedgraph}
+If $G'$ and $G''$ are reduced normal forms of a typed graph $G$,
+$G' \simeq G''$.
+\end{corollary}
+\begin{proof}
+Follows immediately from Theorem~\ref{theorem:ETCCequiv}.
+\end{proof}
+
+\begin{definition}[Reduced form equivalence]
+Let $G_1 = (V_1,E_1,T_1)$ and $G_2 = (V_2,E_2,T_2)$ be typed graphs.
+If $\Re_{G_1}$ and $\Re_{G_2}$ are isomorphic, then $G_1$ and $G_2$ are said to
+be \textit{reduced form equivalent}, denoted by $G_1 \equiv G_2$.
+\end{definition}
+
+Notice that the reduced form equivalence satisfies reflexivity, symmetry and transitivity.
+We denote by $[G]_\equiv$ the equivalence class
+of a graph $G$ regarding the \textit{reduced form equivalence} relation.
+Clearly $|[G]_\equiv|$ is infinite, since each vertex in the reduced normal form
+could be a result of reducing any connected typed graph with all vertices having the same
+type as the reduced vertex.
+We provide further analysis of the \textit{reduced form equivalence} class
+in Section~\ref{sec:substitution}.
+
+%Notice that the reduced form equivalence is a transitive relation, i.e.,
+%if $G_1 \equiv G_2$ and $G_2 \equiv G_3$, then $G_1 \equiv G_3$,
+%where $G_1$, $G_2$ and $G_3$ are typed graphs.
+
+\section{Subgraph substitution rule}\label{sec:substitution}
+
+In this section, we define a substitution rule that maps from
+one typed graph to another \textit{reduced form equivalent} typed graph.
+We first define two predicates that will be used for defining the 
+subgraph substitution rule.
+
+Let $G = (V,E,T)$ be a typed graph and $\tyv{v}{\tau}\in V$.
+The first predicate, $P_P(S, \tyv{v}{\tau})$, defines a set $S$ that is a valid superset of the complete partitioning of $N(\tyv{v}{\tau})$,
+the set of vertices adjacent to $\tyv{v}{\tau}$.
+\begin{equation*}
+\begin{split}
+P_P(S, \tyv{v}{\tau}): &[\forall S'\in S, S'\neq\emptyset \wedge 
+  \nexists S''\neq S' \in S, S'\cap S''\neq\emptyset]\wedge \\
+  &[\forall \tyv{v'}{\tau'}\in N(\tyv{v}{\tau}), \exists S'\in S, \tyv{v'}{\tau'}\in S'].
+\end{split}
+\end{equation*}
+In other words,
+$P_P(S, \tyv{v}{\tau})$ is true for a given set $S$
+if and only if
+$N_P\subseteq S$, such that $N_P$ is a partition of $N(\tyv{v}{\tau})$,
+i.e. $N_P$ contains 
+a collection of mutually disjoint non-empty sets whose union is $N(\tyv{v}{\tau})$.
+
+The second predicate, $P_C(V',E',\tau)$, is true if and only if $(V',E',\{\tau\})$ is an 
+homogeneous connected component.
+\[
+P_C(V',E',\tau): \forall \tyv{S'}{\tau}\in V', \forall \tyv{S''}{\tau}\in V',
+    \tyv{S'}{\tau}\sim\tyv{S''}{\tau}
+\]
+where $\sim$ is the relation presented in Definition~\ref{def:connectedcomponent}.
+
+Let $\mathcal{G}(\tyv{v}{\tau})$ such that
+\[
+\mathcal{G}(\tyv{v}{\tau}) = \{(V',E',\{\tau\}|
+    V'=\{\tyv{S'}{\tau}|S'\in S\}\wedge P_P(S, \tyv{v}{\tau}) \wedge P_C(V',E',\tau)\}.
+\]
+$\mathcal{G}(\tyv{v}{\tau})$ defines the set of all typed graphs $G'\in\mathcal{G}(\tyv{v}{\tau})$
+such that $\Re_{G'}$ is isomorphic to the \textit{singleton} graph $(\{\tyv{v}{\tau}\},\emptyset,\{\tau\})$,
+i.e., $\mathcal{G}(\tyv{v}{\tau})$ is isomorphically equivalent to the set of all connected homogeneous typed graphs with type-set $\{\tau\}$.
+
+\begin{definition}[Vertex substitution]
+Let $G = (V,E,T)$ be a typed graph and $\tyv{v}{\tau}\in V$.
+Let $H\in\mathcal{G}(\tyv{v}{\tau})$.
+\[
+\mathcal{S}^{v:\tau}_H|G = (V',E',T)
+\]
+such that
+$V' = (V\setminus\{\tyv{v}{\tau}\})\cup V(H)$
+and
+$E' = (E\setminus E'')\cup E(H)\cup E'''$
+with
+$E'' = \{ \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}| \tyv{v'}{\tau'}\in N(\tyv{v}{\tau})\}$
+and
+$E''' = \{ \{\tyv{S'}{\tau},\tyv{v'}{\tau'}\}|\tyv{v'}{\tau'}\in N(\tyv{v}{\tau}) \wedge\allowbreak\tyv{S'}{\tau}\in V(H)\}$.
+$V(H)$ is the vertex-set of $H$ and $E(H)$ is the edge-set of $H$.
+\end{definition}
+
+\begin{theorem}\label{theorem:substEquiv}
+Let $G = (V,E,T)$ be a typed graph and $\tyv{v}{\tau}\in V$.
+For all $H\in\mathcal{G}(\tyv{v}{\tau})$ we have that $\mathcal{S}^{v:\tau}_H|G \equiv G$.
+\end{theorem}
+
+Theorem~\ref{theorem:substEquiv} follows directly from the definition of \textit{vertex substitution}.
+$\mathcal{S}^{v:\tau}_H|G$ substitutes a vertex $\tyv{v}{\tau}$ by a connected typed graph
+that is \textit{reduced form equivalent} to the \textit{singleton} graph $(\{\tyv{v}{\tau}\},\emptyset,\{\tau\})$.
+
+\begin{theorem}\label{theorem:isEquivClass}
+Let $G$ be a typed graph and $\Re_G = (V,E,T)$ be its reduced normal form, where $V = \{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}, \ldots, \tyv{v_n}{\tau_n}\}, n\in \mathbf{N}$.
+Let $K$ be the set
+\[
+K = \{ \mathcal{S}^{{v_1}:{\tau_1}}_{H_1}|\mathcal{S}^{{v_2}:{\tau_2}}_{H_2}|\dots|\mathcal{S}^{{v_n}:{\tau_n}}_{H_n}|\Re_G
+             \,\,\,\,\,|\,\,\,   H_i\in\mathcal{G}(\tyv{v_i}{\tau_i}),\tyv{v_i}{\tau_i}\in V\}
+\]
+where $\mathcal{S}^{{v_1}:{\tau_1}}_{H_1}|\mathcal{S}^{{v_2}:{\tau_2}}_{H_2}|\cdots|\mathcal{S}^{{v_n}:{\tau_n}}_{H_n}|\Re_G$
+represents the consecutive application of the substitution rule, i.e.,
+$\mathcal{S}^{{v_1}:{\tau_1}}_{H_1}|\left(\mathcal{S}^{{v_2}:{\tau_2}}_{H_2}|\left(\cdots|\left(\mathcal{S}^{{v_n}:{\tau_n}}_{H_n}|\Re_G\right)\cdots\right)\right)$.
+Therefore,
+\[
+(\forall G'\in K, \exists G''\in[G]_\equiv, G'\simeq G'') \wedge
+(\forall G'\in[G]_\equiv, \exists G''\in K, G'\simeq G'')
+\]
+\end{theorem}
+\begin{proof}
+It follows directly from the definition of the substitution rule and the definition of $\mathcal{G}(\tyv{v_i}{\tau_i}),\tyv{v_i}{\tau_i}\in V$,
+since $\mathcal{G}(\tyv{v_i}{\tau_i})$ is isomorphically equivalent to the set of all connected typed graphs with type-set $\{\tau_i\}$.
+By substituting all vertices $\tyv{v_i}{\tau_i}$ in the reduced graph of $G$,
+by any other $H_i$ of the same type, we can produce typed graphs isomorphic to
+any graph in the equivalence class $[G]_\equiv$.
+\end{proof}
+
+Proposition~\ref{prop:sizereducedclass}
+analyses the size of a restricted subset of this equivalence class,
+which is itself finite if and only if the typed graph in reduced normal form is
+also finite.
+
+\begin{prop}\label{prop:sizereducedclass}
+Let $G = (V,E,T)$ be a typed graph and $\tyv{v}{\tau}\in V$.
+Consider a restricted form of the first predicate that accepts
+only sets that is itself a complete partitioning of $N(\tyv{v}{\tau})$, i.e.,
+$P_P^*(S, \tyv{v}{\tau}): P_P(S, \tyv{v}{\tau}) \wedge [\forall S'\in S, S'\subseteq N(\tyv{v}{\tau})]$.
+In other words,
+$P_P(S, \tyv{v}{\tau})$ is true for a given set $S$
+if and only if
+$S$ itself is a partition of $N(\tyv{v}{\tau})$,
+i.e. $S$ contains 
+a collection of mutually disjoint non-empty sets whose union is $N(\tyv{v}{\tau})$.
+Consider also a restricted subset of $\mathcal{G}(\tyv{v}{\tau})$, namely, $\mathcal{G}^*(\tyv{v}{\tau})$, such that
+\[
+\mathcal{G}^*(\tyv{v}{\tau}) = \{(V',E',\{\tau\}|
+    V'=\{\tyv{S'}{\tau}|S'\in S\}\wedge P_P^*(S, \tyv{v}{\tau}) \wedge P_C(V',E',\tau)\}.
+\]
+Finally, consider $K \subseteq [G]_\equiv$ such that
+\[
+K = \{ \mathcal{S}^{{v_1}:{\tau_1}}_{H_1}|\mathcal{S}^{{v_2}:{\tau_2}}_{H_2}|\dots|\mathcal{S}^{{v_n}:{\tau_n}}_{H_n}|G
+             \,\,\,\,\,|\,\,\,   H_i\in\mathcal{G}^*(\tyv{v_i}{\tau_i}),\tyv{v_i}{\tau_i}\in V\}
+\]
+Therefore
+\[
+\prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2} \leq |K| < \prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2}2^{\binom{d(v:\tau)}{2}}
+\]
+\end{prop}
+\begin{proof}
+Let $d' = d(\tyv{v}{\tau})$.
+Notice that $\{S|P_P^*(S, \tyv{v}{\tau})\}$
+is the set of all
+valid partitions of the set $N(\tyv{v}{\tau})$
+into exactly $d'$ partitions, where some of the partitions may receive no
+element of $N(\tyv{v}{\tau})$. We can partition $N(\tyv{v}{\tau})$
+in a total of $\binom{d'}{2}$ different ways. Thus $|\{S|P_P^*(S, \tyv{v}{\tau})\}| = \binom{d'}{2}$.
+
+For any valid vertex-set $V'=\{\tyv{S'}{\tau}|S'\in S\}$, with $P_P^*(S, \tyv{v}{\tau})$ true,
+the set $\{E'| P_C(V',E',\tau)\}$ represents the set of all edge-sets such that the resulting graph is connected.
+Therefore, $|\{E'| P_C(V',E',\tau)\}| < 2^{\binom{d'}{2}}$,
+which also follows that $\binom{d'}{2} \leq |\mathcal{G}^*(\tyv{v}{\tau})| < \binom{d'}{2}2^{\binom{d'}{2}}$.
+
+If we repeat this process for all vertices in $V$
+we can easily conclude that
+\[
+\prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2} \leq |K| < \prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2}2^{\binom{d(v:\tau)}{2}}
+\]
+\end{proof}
+
+We have defined and studied a vertex substitution rule.
+We can also generalise this substitution rule as a subgraph substitution rule.
+Let $G' = (V',E',\{\tau\})$, $\tau\in T$, be a connected homogeneous subgraph of type $\tau$ of $G$,
+i.e. $G'\subgraph G$ and $G'$ have all vertices of type $\tau$. 
+Let $N(G')$ be the set $\{ \tyv{v}{\tau}\in V\setminus{V'} | \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\in E \wedge \tyv{v'}{\tau'}\in V'\}$.
+We first consider another predicate, $P_P(S, G', \tau)$, that defines a set $S$ that is a valid superset of the complete partitioning of $N(G')$.
+\begin{equation*}
+\begin{split}
+P_P(S, G'): &[\forall S'\in S, S'\neq\emptyset \wedge 
+  \nexists S''\neq S' \in S, S'\cap S''\neq\emptyset]\wedge \\
+  &[\forall \tyv{v'}{\tau'}\in N(G'), \exists S'\in S, \tyv{v'}{\tau'}\in S'].
+\end{split}
+\end{equation*}
+
+Let $\mathcal{G}(G')$ such that
+\[
+\mathcal{G}(G') = \{(V',E',\{\tau\})|
+    V'=\{\tyv{S'}{\tau}|S'\in S\}\wedge P_P(S, G') \wedge P_C(V',E',\tau)\}.
+\]
+$\mathcal{G}(G')$ defines the set of all typed graphs $G''\in\mathcal{G}(\tyv{v}{\tau})$
+such that $G''$ is \textit{reduced form equivalent} to $G'$.
+The set $\mathcal{G}(G')$ also represents the set of all connected typed graphs with type-set $\{\tau\}$.
+
+\begin{definition}[Subgraph substitution]
+Let $G = (V,E,T)$ be a typed graph and
+$G'$ be a homogeneous connected subgraph of $G$, where all vertices of $G'$ have the same type $\tau\in T$.
+Let $H\in\mathcal{G}(G')$.
+\[
+\mathcal{S}^{G'}_H|G = (V',E',T)
+\]
+such that
+$V' = (V\setminus V(G'))\cup V(H)$
+and
+$E' = ((E\setminus E(G'))\setminus E'')\cup E(H)\cup E'''$
+where
+$E'' = \{ \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\in E | \tyv{v}{\tau}\in V\setminus{V(G')} \wedge \tyv{v'}{\tau'}\in V(G')\}$
+and\\
+$E''' = \{ \{\tyv{S'}{\tau'},\tyv{v}{\tau}\}|\tyv{v}{\tau}\in N(G') \wedge \tyv{S'}{\tau'}\in V(H)
+           \wedge \tyv{v}{\tau}\in S' \}$.
+\end{definition}
+
+\begin{theorem}\label{theorem:subgraphSubstEquiv}
+Let $G = (V,E,T)$ be a typed graph and
+$G'$, be a connected subgraph of $G$, with all vertices of $G'$ having the same type $\tau\in T$.
+For all $H\in\mathcal{G}(G')$ we have that $\mathcal{S}^{G'}_H|G \equiv G$.
+\end{theorem}
+
+Theorem~\ref{theorem:subgraphSubstEquiv} follows directly from the definition of \textit{subgraph substitution}.
+$\mathcal{S}^{G'}_H|G \equiv G$ substitutes a connected subgraph $G'$ with all vertices having the same type $\tyv{v}{\tau}$,
+i.e. $G'$
+is \textit{reduced form equivalent} to the \textit{singleton} graph $(\{\tyv{v}{\tau}\},\emptyset,\{\tau\})$,
+by another connected typed graph that is also \textit{reduced form equivalent} to the \textit{singleton} graph with type
+$\tau$.
+
+\section{Vertex colouring}
+
+Vertex colouring is a labelling of the vertices of a
+graph given some restrictions.
+In this section, we provide two definitions for vertex colouring
+in typed graphs: $(i)$ \textit{type-restrictive vertex colouring}
+is a labelling of the vertices such that no two adjacent vertices
+or no two vertices of different types can have the same colour;
+$(ii)$ \textit{type-permissive vertex colouring} 
+is a labelling of the vertices such that 
+no two adjacent vertices of the same type can have the
+same colour.
+
+\begin{definition}[Type-restrictive vertex colouring]
+Let $\kappa_R:V\rightarrow \mathbf{N}$ be the
+type-restrictive vertex colouring of a typed graph $G = (V,E,T)$.
+For $\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\in V$,
+if $\tau_i\neq\tau_j$
+or
+$\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+then
+$\kappa_R(\tyv{v_i}{\tau_i})\neq\kappa_R(\tyv{v_j}{\tau_j})$.
+\end{definition}
+
+\begin{definition}[Type-permissive vertex colouring]
+Let $\kappa_P:V\rightarrow \mathbf{N}$ be the
+type-permissive vertex colouring of a typed graph $G = (V,E,T)$.
+For $\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\in V$,
+if $\tau_i=\tau_j$
+and
+$\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+then
+$\kappa_P(\tyv{v_i}{\tau_i})\neq\kappa_P(\tyv{v_j}{\tau_j})$.
+\end{definition}
+
+If the type-set has size one, both typed vertex colouring definitions
+simplifies to the classic definition of vertex colouring. 
+Theorem~\ref{theorem:vertcolour} shows that both typed vertex colouring definitions
+are equivalent when the typed graph has type-set of size one.
+
+\begin{theorem}\label{theorem:vertcolour}
+Let $G = (V,E,T)$ be a typed graph.
+If $|T|=1$, then
+the set of type-restrictive vertex colouring equals
+the set of type-permissive vertex colouring.
+%Formally:
+%For all type-restrictive vertex colouring of $G$,
+%$\kappa_R:V\rightarrow \mathbf{N}$,
+%there is a 
+%type-permissive vertex colouring of $G$,
+%$\kappa_P:V\rightarrow \mathbf{N}$,
+%such that $\forall \tyv{v}{\tau}\in V, \kappa_R(\tyv{v}{\tau})=\kappa_P(\tyv{v}{\tau})$.
+\end{theorem}
+\begin{proof}
+Consider the two predicates
+$P_E(\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}): \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+and
+$P_T(\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}):(\tau_i=\tau_j$).
+Let $\kappa:V\rightarrow \mathbf{N}$.
+Define the following two predicates:
+\[
+P_R(\kappa)\!: \forall \tyv{v}{\tau}\in V, \nexists \tyv{v'}{\tau'}\neq \tyv{v}{\tau}\in V,
+\kappa(\tyv{v}{\tau})=\kappa(\tyv{v'}{\tau'})\wedge(\overline{P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})}\vee P_E(\tyv{v}{\tau},\tyv{v'}{\tau'}))
+\]
+\[
+P_P(\kappa)\!: \forall \tyv{v}{\tau}\in V, \nexists \tyv{v'}{\tau'}\neq \tyv{v}{\tau}\in V,
+\kappa(\tyv{v}{\tau})=\kappa(\tyv{v'}{\tau'})\wedge P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})\wedge P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})
+\]
+Notice that $\kappa:V\rightarrow \mathbf{N}$
+is a type-restrictive vertex colouring of $G$
+if and only if $P_R(\kappa)$ is true
+and that
+$\kappa:V\rightarrow \mathbf{N}$
+is a type-permissive vertex colouring of $G$
+if and only if $P_P(\kappa)$ is true.
+Since all vertices have the same type,
+$P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})$ is
+always true for all 
+$\tyv{v}{\tau},\tyv{v'}{\tau'}\in V$.
+Therefore both predicates simplify to
+\[
+P_K(\kappa): \forall \tyv{v}{\tau}\in V, \nexists \tyv{v'}{\tau'}\neq \tyv{v}{\tau}\in V,
+(\kappa(\tyv{v}{\tau})=\kappa(\tyv{v'}{\tau'}))\wedge P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})
+\]
+\end{proof}
+
+Notice also that the predicate $P_K(\kappa:V\rightarrow \mathbf{N})$
+is equivalent to the classic definition of vertex colouring.
+
+We call
+\textit{type-restrictive chromatic number} the
+minimum number of colours by a type-restrictive vertex colouring, denoted by
+$\chi_R(G)$.
+Similarly, 
+we call
+\textit{type-permissive chromatic number} the
+minimum number of colours by a type-permissive vertex colouring, denoted by
+$\chi_P(G)$.
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph in the reduced normal form.
+The type-restrictive chromatic number of $G$ is $\chi_R(G)=|T|$.
+\end{theorem}
+\begin{proof}
+By definition, we have that $\chi_R(G)\geq|T|$,
+since no two vertices of different types can have the same colour.
+However,
+$\nexists \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E, \tau_i=\tau_j$,
+and thus
+all vertices of the same type can have the same colour,
+since they are all independent.
+Therefore, $\chi_R(G)=|T|$.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph in the reduced normal form.
+The type-permissive chromatic number of $G$ is $\chi_P(G)=1$.
+\end{theorem}
+\begin{proof}
+By definition, $\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E, \tau_i\neq\tau_j$.
+Therefore, by definition,
+there is a type-permissive vertex colouring
+$\kappa_P:V\rightarrow \mathbf{N}$
+such that
+$\forall \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in V, \kappa_P(\tyv{v_i}{\tau_i})=\kappa_P(\tyv{v_j}{\tau_j})$,
+since $\tau_i\neq\tau_j$.
+Hence, $\chi_P(G)=1$.
+\end{proof}
+
+\begin{theorem} \label{theorem:R4moreRestrictive}
+In a type-restrictive vertex colouring,
+whenever two vertices can have the same colour,
+they can also have the same colour in a type-permissive vertex colouring,
+but not vice versa. Formally: Let $G = (V,E,T)$ be a typed graph. Then
+\begin{equation*}
+\begin{split}
+\forall \kappa_R:V\rightarrow \mathbf{N}, \forall \tyv{v}{\tau},\tyv{v'}{\tau'}\in V,
+\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}) \\
+\implies \exists \kappa_P:V\rightarrow \mathbf{N}, \kappa_P(\tyv{v}{\tau})=\kappa_P(\tyv{v'}{\tau'})
+\end{split}
+\end{equation*}
+and
+\begin{equation*}
+\begin{split}
+\forall \kappa_P:V\rightarrow \mathbf{N}, \forall \tyv{v}{\tau},\tyv{v'}{\tau'}\in V,
+\kappa_P(\tyv{v}{\tau})=\kappa_P(\tyv{v'}{\tau'}) \\
+\centernot\implies \exists \kappa_R:V\rightarrow \mathbf{N}, \kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'})
+\end{split}
+\end{equation*}
+such that $\kappa_R:V\rightarrow \mathbf{N}$ is a type-restrictive vertex colouring
+and $\kappa_P:V\rightarrow \mathbf{N}$ is a type-permissive vertex colouring.
+\end{theorem}
+\begin{proof}
+Consider again the two predicates
+$P_E(\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}): \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+and
+$P_T(\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}):(\tau_i=\tau_j)$.
+Let us prove the first statement.
+By definition,
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'})$ implies
+that $P_T(\tyv{v}{\tau},\tyv{v'}{\tau'}) \wedge \overline{P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})}$.
+Because $\overline{P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})}$ is true,
+i.e. $\{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\notin E$,
+by definition it follows that $\exists \kappa_R:V\rightarrow \mathbf{N}, \kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'})$.
+
+Now, let us prove the second statement by contradiction.
+Suppose
+\begin{equation*}
+\begin{split}
+\forall \kappa_P:V\rightarrow \mathbf{N}, \forall \tyv{v}{\tau},\tyv{v'}{\tau'}\in V,
+\kappa_P(\tyv{v}{\tau})=\kappa_P(\tyv{v'}{\tau'}) \\
+\implies \exists \kappa_R:V\rightarrow \mathbf{N}, \kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}).
+\end{split}
+\end{equation*}
+By definition,
+$\kappa_P(\tyv{v}{\tau})=\kappa_P(\tyv{v'}{\tau'})$ implies
+that $\overline{P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})} \vee \overline{P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})}$.
+Therefore, either $\overline{P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})}$ is true, 
+or $\overline{P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})}$ is true, or both are true.
+However, if $\overline{P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})}$ is true,
+then $\tyv{v}{\tau}$ and $\tyv{v'}{\tau'}$ have different types, i.e., 
+$\tau\neq\tau'$.
+Therefore, by definition, $\nexists \kappa_R:V\rightarrow \mathbf{N}, \kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'})$,
+which is a contradiction.
+\end{proof}
+
+Theorem~\ref{theorem:R4moreRestrictive} suggests that
+type-restrictive vertex colouring is more prohibitive 
+for repeating colours than type-permissive vertex colouring.
+Corollary~\ref{cor:colouringrelation} follows directly from Theorem~\ref{theorem:R4moreRestrictive},
+because we can always find a 
+type-permissive vertex colouring that repeats at least as many colours as
+the type-restrictive vertex colouring.
+
+\begin{corollary}\label{cor:colouringrelation}
+Let $G = (V,E,T)$ be a typed graph.
+Thus $\chi_P(G) \leq \chi_R(G)$.
+\end{corollary}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph, with $|T| = k$,
+and $S$ be the set of homogeneous connected components of $G$.
+For each $\tau_i \in T$, let $H_i = \bigcup \{S'\in S| T(S') = \{\tau_i\}\}$,
+i.e. $H_i$ is the union of the homogeneous connected components of $G$
+with all vertices having the same type $\tau_i$.
+Let $\kappa_1,\kappa_2,\ldots,\kappa_k:V\rightarrow\mathbf{N}$,
+such that $\kappa_i:V\rightarrow\mathbf{N}$ is a
+type-restrictive vertex colouring for the subgraph $H_i$, for all $i\in[1,k]$.
+If $\Image\,\,\kappa_i \cap \Image\,\,\kappa_j = \emptyset$,
+then $\bigcup_{i=1}^k \kappa_i$ is a
+type-restrictive vertex colouring of $G$.
+\end{theorem}
+\begin{proof}
+Let us prove by contradiction.
+Suppose $\kappa_R = \bigcup_{i=1}^k\kappa_i$ is not a
+type-restrictive vertex colouring.
+Therefore
+$\exists \tyv{v}{\tau},\tyv{v'}{\tau'}\in V$
+such that
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}) \wedge (\tau\neq\tau' \vee \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\in E)$.
+Let us analyse
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}) \wedge \tau\neq\tau'$
+and
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}) \wedge \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\in E$
+in two separate cases and show that they both never occur.
+
+Because $\tau\neq\tau'$ implies that 
+$\tyv{v}{\tau}$ and $\tyv{v'}{\tau'}$ belong two different subgraphs,
+resulting from the union of homogeneous connected components of the same type,
+and therefore 
+$\kappa_R(\tyv{v}{\tau}) \neq \kappa_R(\tyv{v'}{\tau'})$
+since $\kappa_i$ have disjoint image sets for different types.
+Therefore 
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}) \wedge \tau\neq\tau'$
+is not possible.
+
+For the second case, we have shown that $\tau\neq\tau'$ contradicts 
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'})$, then we consider that
+$\tau=\tau'$.
+However, $\tau=\tau'\wedge \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\in E$
+implies that 
+$\tyv{v}{\tau}$ and $\tyv{v'}{\tau'}$ are in the same
+subgraph, resulting from the union of homogeneous connected components of the same type,
+and are also adjacent vertices.
+Which contradicts the assumption that $k_i$ are valid 
+type-restrictive vertex colouring for the subgraph $H_i$, for all $i\in[1,k]$.
+Therefore,
+$\kappa_R(\tyv{v}{\tau})=\kappa_R(\tyv{v'}{\tau'}) \wedge \{\tyv{v}{\tau},\tyv{v'}{\tau'}\}\in E$
+is also not possible.
+
+Since both cases are not possible,
+we have a contradiction.
+\end{proof}
+
+\begin{corollary}
+Let $G = (V,E,T)$ be a typed graph, with $|T| = k$,
+and $S$ be the set of homogeneous connected components of $G$.
+For each $\tau_i \in T$, let $H_i = \bigcup \{S'\in S| T(S') = \{\tau_i\}\}$,
+i.e. $H_i$ is the union of the homogeneous connected components of $G$
+with all vertices having the same type $\tau_i$.
+Let $\kappa_1,\kappa_2,\ldots,\kappa_k:V\rightarrow\mathbf{N}$,
+such that $\kappa_i:V\rightarrow\mathbf{N}$ is a minimum
+type-restrictive vertex colouring for the subgraph $H_i$, for all $i\in[1,k]$.
+If $\Image\,\,\kappa_i \cap \Image\,\,\kappa_j = \emptyset$,
+then $\bigcup_{i=1}^k \kappa_i$ is a minimum
+type-restrictive vertex colouring of $G$.
+\end{corollary}
+\begin{proof}
+Suppose $\bigcup_{i=1}^k \kappa_i$ is not a minimum
+type-restrictive vertex colouring of $G$.
+Then there is a minimum
+type-restrictive vertex colouring
+$k:V\rightarrow\mathbf{N}$,
+such that $|\Image \kappa| < |\Image \bigcup_{i=1}^k \kappa_i|$.
+By definition,
+if we denote by $\Image[\tau] \kappa$ the image of the colouring
+function $\kappa$ for the vertices of type $\tau$,
+i.e. $\Image[\tau] \kappa = \{\kappa(\tyv{v}{\tau})| \tyv{v}{\tau}\in V[\tau]\}$,
+then we know that $\tau_i,\tau_j\in T, \tau_i\neq\tau_j$ implies that
+$(\Image[\tau_i] \kappa)\cap(\Image[\tau_j] \kappa)$, because no two vertices
+of different types can have the same colour.
+Therefore,
+\begin{equation*}
+\begin{split}
+|\Image \kappa| < |\Image \bigcup_{i=1}^k \kappa_i|\\
+|\bigcup_{i=1}^k (\Image[\tau_i] \kappa)| < |\Image \bigcup_{i=1}^k \kappa_i|\\
+\sum_{i=1}^k | \Image[\tau_i] \kappa| < \sum_{i=1}^k|\Image \kappa_i|\\
+\end{split}
+\end{equation*}
+and thus
+$\exists \tau_i\in T$ such that $| \Image[\tau_i] \kappa < \Image \kappa_i$,
+which is a contradiction, since
+$\kappa_i:V\rightarrow\mathbf{N}$ is a minimum
+type-restrictive vertex colouring for the subgraph $H_i$, for all $i\in[1,k]$.
+\end{proof}
+
+In this section, we studied two definitions of vertex colouring.
+Although these definitions are consistent with the classic
+definition of vertex colouring for homogeneous graphs,
+there is no reason to not consider similar
+definitions with the opposite type-based restriction,
+which we call \textit{negative} definitions.
+In the remaining of this section,
+we study the \textit{negative} definitions of both 
+vertex colouring definitions presented above.
+These \textit{negative} vertex colouring definitions
+do not simplify to the classic definition of vertex
+colouring if we consider homogeneous graphs.
+
+\begin{definition}[Negative type-restrictive vertex colouring]
+Let $\overline{\kappa}_R:V\rightarrow \mathbf{N}$ be the
+negative type-restrictive vertex colouring of a typed graph $G = (V,E,T)$.
+For $\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\in V$,
+if $\tau_i=\tau_j$
+or
+$\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+then
+$\overline{\kappa}_R(\tyv{v_i}{\tau_i})\neq\overline{\kappa}_R(\tyv{v_j}{\tau_j})$.
+\end{definition}
+
+\begin{definition}[Negative type-permissive vertex colouring]
+Let $\overline{\kappa}_P:V\rightarrow \mathbf{N}$ be the
+negative type-permissive vertex colouring of a typed graph $G = (V,E,T)$.
+For $\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\in V$,
+if $\tau_i\neq\tau_j$
+and
+$\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+then
+$\overline{\kappa}_P(\tyv{v_i}{\tau_i})\neq\overline{\kappa}_P(\tyv{v_j}{\tau_j})$.
+\end{definition}
+
+Theorem~\ref{theorem:negvertcolour} shows that both negative vertex colouring definitions
+are equivalent when the typed graph has all vertices with an unique type.
+
+\begin{theorem}\label{theorem:negvertcolour}
+Let $G = (V,E,T)$ be a typed graph.
+If $|T|=|V|$, i.e.,
+$\forall \tyv{v}{\tau} \in V, \nexists \tyv{v'}{\tau'} \in V$
+such that $\tyv{v}{\tau} \neq \tyv{v'}{\tau'} \wedge \tau=\tau'$,
+then
+the set of negative type-restrictive vertex colouring equals
+the set of negative type-permissive vertex colouring.
+%Formally:
+%For all type-restrictive vertex colouring of $G$,
+%$\kappa_R:V\rightarrow \mathbf{N}$,
+%there is a 
+%type-permissive vertex colouring of $G$,
+%$\kappa_P:V\rightarrow \mathbf{N}$,
+%such that $\forall \tyv{v}{\tau}\in V, \kappa_R(\tyv{v}{\tau})=\kappa_P(\tyv{v}{\tau})$.
+\end{theorem}
+\begin{proof}
+Consider the two predicates
+$P_E(\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}): \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E$
+and
+$P_T(\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}):(\tau_i=\tau_j$).
+Let $\overline{\kappa}:V\rightarrow \mathbf{N}$.
+Define the following two predicates:
+\[
+P_{\overline{R}}(\overline{\kappa})\!: \forall \tyv{v}{\tau}\in V, \nexists \tyv{v'}{\tau'}\neq \tyv{v}{\tau}\in V,
+\overline{\kappa}(\tyv{v}{\tau})=\overline{\kappa}(\tyv{v'}{\tau'})\wedge({P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})}\vee P_E(\tyv{v}{\tau},\tyv{v'}{\tau'}))
+\]
+\[
+P_{\overline{P}}(\overline{\kappa})\!: \forall \tyv{v}{\tau}\in V, \nexists \tyv{v'}{\tau'}\neq \tyv{v}{\tau}\in V,
+\overline{\kappa}(\tyv{v}{\tau})=\overline{\kappa}(\tyv{v'}{\tau'})\wedge \overline{P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})}\wedge P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})
+\]
+Notice that $\overline{\kappa}:V\rightarrow \mathbf{N}$
+is a negative type-restrictive vertex colouring of $G$
+if and only if $P_{\overline{R}}(\overline{\kappa})$ is true
+and that
+$\overline{\kappa}:V\rightarrow \mathbf{N}$
+is a negative type-permissive vertex colouring of $G$
+if and only if $P_{\overline{P}}(\overline{\kappa})$ is true.
+Since all vertices have the unique types,
+$\overline{P_T(\tyv{v}{\tau},\tyv{v'}{\tau'})}$ is
+always true for all 
+$\tyv{v}{\tau},\tyv{v'}{\tau'}\in V$.
+Therefore both predicates simplify to
+\[
+P_K(\overline{\kappa}): \forall \tyv{v}{\tau}\in V, \nexists \tyv{v'}{\tau'}\neq \tyv{v}{\tau}\in V,
+(\overline{\kappa}(\tyv{v}{\tau})=\overline{\kappa}(\tyv{v'}{\tau'}))\wedge P_E(\tyv{v}{\tau},\tyv{v'}{\tau'})
+\]
+\end{proof}
+
+\section{Special subsets of vertices}
+
+In this section we study special subsets of vertices
+in the light of typed graph theory.
+First we
+define, prove individual properties
+and also relations between vertex cover
+and independent sets.
+Second, we analyse dominating sets in
+typed graphs.
+
+\subsection{Vertex cover and independent set}
+
+\begin{definition}[Type-restrictive vertex cover]
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$ is a type-restrictive vertex cover
+if and only if
+$\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$,
+$(\tau_i=\tau_j \implies (\tyv{v_i}{\tau_i}\in S \vee \tyv{v_j}{\tau_j}\in S)
+\wedge 
+(\tau_i\neq\tau_j \implies (\tyv{v_i}{\tau_i}\in S \wedge \tyv{v_j}{\tau_j}\in S)$.
+\end{definition}
+
+A type-restrictive vertex cover must contain
+at least one vertex of each edge or both if they have different types.
+
+\begin{definition}[Type-permissive vertex cover]
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$ is a type-permissive vertex cover
+if and only if
+$\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$,
+$\tau_i\neq\tau_j \vee (\tyv{v_i}{\tau_i}\in S \vee \tyv{v_j}{\tau_j}\in S)$.
+\end{definition}
+
+A type-permissive vertex cover must contain
+at least one vertex of each edge with both endpoints of the same type.
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a homogeneous typed graph, i.e. $|T|=1$.
+Therefore, $S\subseteq V$ is a type-restrictive vertex cover
+if and only if $S$ is also a type-permissive vertex cover.
+\end{theorem}
+\begin{proof}
+Since all vertices have the same type,
+$\forall \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in V, \tau_i=\tau_j$,
+then
+the definitions of both type-restrictive vertex cover
+and type-permissive vertex cover can be simplified
+for the homogeneous typed graph $G$.
+In particular,
+$S\subseteq V$ is a type-restrictive vertex cover of $G$
+if and only if
+$\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$,
+$\tau_i=\tau_j \implies (\tyv{v_i}{\tau_i}\in S \vee \tyv{v_j}{\tau_j}\in S)$,
+because
+$\tau_i\neq\tau_j \implies (\tyv{v_i}{\tau_i}\in S \wedge \tyv{v_j}{\tau_j}\in S)$
+is always true.
+Similarly,
+$S\subseteq V$ is a type-permissive vertex cover of $G$
+if and only if
+$\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$,
+$(\tyv{v_i}{\tau_i}\in S \vee \tyv{v_j}{\tau_j}\in S)$,
+because
+$\tau_i\neq\tau_j$ is always false.
+Therefore, both definitions are equivalent for the simplified 
+scenario of homogeneous typed graphs.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a connected typed graph in the reduced normal form.
+Therefore, $S\subseteq V$ is a type-restrictive vertex cover
+if and only if $S = V$.
+\end{theorem}
+\begin{proof}
+By definition, $\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E, \tau_i\neq\tau_j$
+and there is no isolated vertex in $G$.
+Therefore, a type-restrictive vertex cover of $G$ must contain both endpoints
+of every edge in $G$.
+Hence, $V$ is the only type-restrictive vertex cover of $G$.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a connected typed graph in the reduced normal form.
+Therefore, $\emptyset$ is a type-permissive vertex cover of $G$.
+\end{theorem}
+\begin{proof}
+Let us prove by contradiction.
+Suppose $\emptyset$ is not a type-permissive vertex cover of $G$.
+Then, $\exists \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$ such that
+$\tau_i=\tau_j \wedge \tyv{v_i}{\tau_i}\notin\emptyset \wedge \tyv{v_j}{\tau_j}\notin\emptyset$,
+which is a contradiction
+because,$\nexists \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E, \tau_i=\tau_j$.
+\end{proof}
+
+\begin{definition}[Type-restrictive independent set]
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$ is a type-restrictive independent set
+if and only if
+$\forall \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S$,
+$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies (\tyv{v_j}{\tau_j}\notin N(\tyv{v_i}{\tau_i}) \wedge \tau_i=\tau_j)$.
+\end{definition}
+
+A type-restrictive independent set contains only independent (i.e. non-adjacent) vertices of the same type.
+
+\begin{definition}[Type-permissive independent set]
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$ is a type-permissive independent set
+if and only if
+$\forall \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S$,
+$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies (\tyv{v_j}{\tau_j}\notin N(\tyv{v_i}{\tau_i}) \vee \tau_i\neq\tau_j)$.
+\end{definition}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a homogeneous typed graph, i.e. $|T|=1$.
+Therefore, $S\subseteq V$ is a type-restrictive independent set
+if and only if $S$ is also a type-permissive independent set.
+\end{theorem}
+\begin{proof}
+Since all vertices have the same type,
+the definitions of both type-restrictive independent set
+and type-permissive independent set can be simplified
+for the homogeneous typed graph $G$.
+In particular,
+$S\subseteq V$ is a type-restrictive independent set of $G$
+if and only if
+$\forall \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S$,
+$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies \tyv{v_j}{\tau_j}\in N(\tyv{v_i}{\tau_i})$.
+because
+$\tau_i=\tau_j$
+is always true.
+Similarly,
+$S\subseteq V$ is a type-permissive independent set of $G$
+if and only if
+$\forall \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S$,
+$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies \tyv{v_j}{\tau_j}\in N(\tyv{v_i}{\tau_i})$.
+because
+$\tau_i\neq\tau_j$ is always false.
+Therefore, both definitions are equivalent for the simplified 
+scenario of homogeneous typed graphs.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph in the reduced normal form.
+Let $\tau \in T$ and
+$V[\tau] = \{\tyv{v_i}{\tau_i}\in V | \tau_i=\tau\}$.
+Therefore, $V[\tau]$ is a type-restrictive independent set of $G$.
+\end{theorem}
+\begin{proof}
+By definition, $\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E, \tau_i\neq\tau_j$.
+Therefore, $\nexists \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j} \in V$
+such that $\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$.
+Hence, $V[\tau]$ is a set of independent vertices of the same type,
+i.e. $V[\tau]$ is a type-restrictive independent set of $G$.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph in the reduced normal form.
+Therefore, $V$ is a type-permissive independent set of $G$.
+\end{theorem}
+\begin{proof}
+By definition, $\forall \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E, \tau_i\neq\tau_j$.
+Suppose $V$ is not a type-permissive independent set.
+Thus
+$\exists \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in V,
+ \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$,
+which is a contradiction.
+Hence, $V$ is a type-permissive independent set of $G$.
+\end{proof}
+
+For a typed graph $G$, we define $\overline{G}$ as the 
+complement graph with the types of vertices preserved.
+The following two theorems show relations between typed
+independent sets and the complement graph.
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph and $S\subset V$
+be a type-restrictive independent set of $G$.
+Thus, $\overline{G}[S]$ is a complete homogeneous
+typed graph,
+i.e.,
+every pair of vertices in $\overline{G}[S]$
+are adjacent and of the same type.
+\end{theorem}
+\begin{proof}
+Let us prove by contradiction.
+Suppose $\overline{G}[S] = (S,E',T')$
+is not a complete homogeneous typed graph.
+Then,
+$\exists \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S,
+ \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\notin E' \vee \tau_i\neq\tau_j$.
+
+First,
+$\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\notin E'$
+implies that
+$\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$,
+which is a contradiction
+since 
+$\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S$
+and $S$ contains no adjacent vertices of $G$.
+
+Second,
+$\tau_i\neq\tau_j$
+is also a contradiction,
+again, because 
+$\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S$
+and $S$ contains only vertices of the same type.
+\end{proof}
+
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph and $S\subset V$
+be a type-permissive independent set of $G$.
+All
+type-induced subgraphs of $\overline{G}[S]$ are
+complete homogeneous typed graph,
+i.e.,
+$\forall \tau\in T$,
+$(\overline{G}[S])[\tau]$
+is a complete homogeneous typed graph.
+\end{theorem}
+\begin{proof}
+Let us prove by contradiction.
+Suppose 
+$(\overline{G}[S])[\tau] = (V',E',\{\tau\})$,
+for any $\tau\in T$,
+is not a complete homogeneous typed graph.
+Then,
+$\exists \tyv{v_i}{\tau},\tyv{v_j}{\tau}\in V',
+ \{\tyv{v_i}{\tau},\tyv{v_j}{\tau}\}\notin E'$.
+However,
+$\{\tyv{v_i}{\tau},\tyv{v_j}{\tau}\}\notin E'$
+implies that
+$\{\tyv{v_i}{\tau},\tyv{v_j}{\tau}\}\in E$,
+which is a contradiction
+since 
+$\tyv{v_i}{\tau},\tyv{v_j}{\tau}\in S$
+and $S$ contains no adjacent vertices of the same type in $G$.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph.
+If
+$S\subseteq V$
+is a type-restrictive vertex cover
+then
+$V\setminus S$
+is a type-permissive independent set.
+\end{theorem}
+\begin{proof}
+Let us prove by contradiction.
+Suppose $V\setminus S$ is not a 
+type-permissive independent set.
+Thus,
+$\exists \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in V\setminus S$
+%such that the proposition
+%$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies
+%(\tyv{v_j}{\tau_j}\notin N(\tyv{v_i}{\tau_i}) \vee \tau_i\neq\tau_j)$.
+%is false, i.e.,
+%$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \wedge 
+%\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$
+%is true
+such that
+$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \wedge 
+\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$,
+which is a contradiction,
+because we assumed that $\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in V\setminus S$,
+but we know that
+$\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$
+implies that
+$\tyv{v_i}{\tau_i}\in S \vee \tyv{v_j}{\tau_j}\in S$,
+since $S$ is a type-restrictive vertex cover.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$
+is a type-permissive independent set
+if and only if
+$V\setminus S$
+is a type-permissive vertex cover.
+\end{theorem}
+\begin{proof}
+We prove in two steps.
+
+$(\Longrightarrow)$
+Let us prove by contradiction.
+Suppose $V\setminus S$ is not a 
+type-permissive vertex cover.
+Thus,
+$\exists \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$
+%such that the proposition
+%$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies
+%(\tyv{v_j}{\tau_j}\notin N(\tyv{v_i}{\tau_i}) \vee \tau_i\neq\tau_j)$.
+%is false, i.e.,
+%$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \wedge 
+%\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$
+%is true
+such that
+$\tau_i=\tau_j \wedge \tyv{v_i}{\tau_i}\notin V\setminus S \wedge \tyv{v_j}{\tau_j} \notin V\setminus S$,
+i.e.,
+$\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j \wedge \tyv{v_i}{\tau_i}\in S \wedge \tyv{v_j}{\tau_j} \in S$,
+which is a contradiction
+since $S$ is a type-permissive independent set.
+
+$(\Longleftarrow)$
+Let us prove by contradiction.
+Suppose $V\setminus S$ is not a 
+type-permissive independent set.
+Thus,
+$\exists \tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in V\setminus S$
+%such that the proposition
+%$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \implies
+%(\tyv{v_j}{\tau_j}\notin N(\tyv{v_i}{\tau_i}) \vee \tau_i\neq\tau_j)$.
+%is false, i.e.,
+%$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \wedge 
+%\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j$
+%is true
+such that
+$\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j} \wedge \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E
+ \wedge \tau_i=\tau_j$,
+i.e.,
+for $\tyv{v_i}{\tau_i}\neq\tyv{v_j}{\tau_j}$,
+$\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\notin S \wedge \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E
+ \wedge \tau_i=\tau_j$,
+which is a contradiction
+since $\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E
+ \wedge \tau_i=\tau_j$ implies that $\tyv{v_i}{\tau_i}\in S \vee \tyv{v_j}{\tau_j}\in S$.
+\end{proof}
+
+\begin{theorem}
+Let $G = (V,E,T)$ be a typed graph.
+If
+$S\subseteq V$
+is a type-restrictive independent set
+then
+$V\setminus S$
+is a type-permissive vertex cover.
+\end{theorem}
+\begin{proof}
+Let us prove by contradiction.
+Suppose $V\setminus S$ is not a 
+type-permissive vertex cover.
+Thus,
+$\exists \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E$
+such that
+$\tau_i=\tau_j \wedge \tyv{v_i}{\tau_i}\notin V\setminus S \wedge \tyv{v_j}{\tau_j} \notin V\setminus S$,
+i.e.,
+$\{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\in E \wedge \tau_i=\tau_j \wedge \tyv{v_i}{\tau_i}\in S \wedge \tyv{v_j}{\tau_j} \in S$,
+which is a contradiction
+since $S$ is a type-restrictive independent set,
+and therefore $\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\in S \implies \{\tyv{v_i}{\tau_i},\tyv{v_j}{\tau_j}\}\notin E \wedge \tau_i=\tau_j$.
+\end{proof}
+
+\subsection{Dominating set}
+
+\begin{definition}[Dominating set]\label{def:dom-set}
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$ is a dominating set
+if and only if
+$\forall \tyv{v_i}{\tau_i}\in V, \tyv{v_i}{\tau_i}\in S \vee
+ (
+   \exists \tyv{v_j}{\tau_j}\in S, \tyv{v_j}{\tau_j}\in N(\tyv{v_i}{\tau_i})
+   \wedge \tau_i=\tau_j
+ )
+$.
+\end{definition}
+
+If $G$ is a homogeneous typed graph
+then Definition~\ref{def:dom-set}
+of dominating set is equivalent 
+to the classic untyped definition
+of dominating set.
+
+\begin{theorem}
+If $G = (V,E,T)$ is a typed graph in the reduced normal form,
+then $V$ is the only dominating set of $G$.
+\end{theorem}
+\begin{proof}
+Because $G$ is in the reduced normal form, by definition,
+$\forall \tyv{v_i}{\tau_i}\in V,
+\nexists \tyv{v_j}{\tau_j}\in S, \tyv{v_j}{\tau_j}\in N(\tyv{v_i}{\tau_i})
+   \wedge \tau_i=\tau_j$.
+Therefore, every vertex $\tyv{v_i}{\tau_i}\in V$ must be in the dominating set.
+\end{proof}
+
+\begin{theorem}
+Let $G$ be a typed graph.
+$\forall \tau \in T$, $S_\tau$ is a dominating set of $G[\tau]$
+if and only if $\cup_{\tau\in T} S_\tau$ is a dominating set of $G$.
+\end{theorem}
+\begin{proof}
+$(\Longrightarrow)$ Suppose  
+$\forall \tau \in T$, $S_\tau$ is a dominating set of $G[\tau]$.
+Hence, $\forall \tyv{v_i}{\tau}\in V$ it holds that 
+either $\tyv{v_i}{\tau}\in S_{\tau}$ or there is 
+$\tyv{v_j}{\tau}\in S$ such that $\tyv{v_j}{\tau}\in N(\tyv{v_i}{\tau})$.
+Therefore, $\cup_{\tau\in T} S_\tau$ is a dominating set of $G$.
+
+$(\Longleftarrow)$ Suppose $S$ is a dominating set of $G$.
+Let $S_\tau = \{\tyv{v_i}{\tau_i}\in S|\tau_i=\tau\}$.
+Thus, for all vertex $\tyv{v_i}{\tau}\in V$ of type $\tau$,
+it holds that 
+either $\tyv{v_i}{\tau}\in S$, and then $\tyv{v_i}{\tau}\in S_\tau$,
+or there is 
+$\tyv{v_j}{\tau}\in S$, i.e. $\tyv{v_j}{\tau}\in S_\tau$,
+such that $\tyv{v_j}{\tau}\in N(\tyv{v_i}{\tau})$.
+Therefore, $S_\tau$ is a dominating set of $G[\tau]$.
+\end{proof}
+
+\begin{corollary}
+Let $G$ be a typed graph
+and $S$ be the minimum dominating set of $G$.
+Thus, $|S|$ is greater than or equal to the number of 
+homogeneous connected components of $G$.
+\end{corollary}
+
+\begin{definition}[Negative dominating set]\label{def:neg-dom-set}
+Let $G = (V,E,T)$ be a typed graph.
+$S\subseteq V$ is a dominating set
+if and only if
+$\forall \tyv{v_i}{\tau_i}\in V, \tyv{v_i}{\tau_i}\in S \vee
+ (
+   \exists \tyv{v_j}{\tau_j}\in S, \tyv{v_j}{\tau_j}\in N(\tyv{v_i}{\tau_i})
+   \wedge \tau_i\neq\tau_j
+ )
+$.
+\end{definition}
+
+If $G$ is a typed graph in the reduced normal form
+then Definition~\ref{def:neg-dom-set}
+of negative dominating set is equivalent 
+to the classic untyped definition
+of dominating set.
+
+\begin{theorem}
+If $G = (V,E,T)$ is a homogeneous typed graph,
+then $V$ is the only negative dominating set of $G$.
+\end{theorem}
+\begin{proof}
+Because $G$ is a homogeneous typed graph, by definition,
+$\forall \tyv{v_i}{\tau_i}\in V,
+\nexists \tyv{v_j}{\tau_j}\in S, \tyv{v_j}{\tau_j}\in N(\tyv{v_i}{\tau_i})
+   \wedge \tau_i\neq\tau_j$.
+Therefore, every vertex $\tyv{v_i}{\tau_i}\in V$ must be in the dominating set.
+\end{proof}
+
+\section{Binary operations}
+
+Let $G_1 = (V_1,E_1,T_1)$ and $G_2 = (V_2,E_2,T_2)$
+be typed graphs.
+
+\begin{definition}[Graph union]
+$G_1\cup G_2 = (V_1\cup V_2, E_1\cup E_2, T_1\cup T_2)$
+\end{definition}
+
+\begin{definition}[Graph intersection]
+$G_1\cap G_2 = (V_1\cap V_2, E_1\cap E_2, T_1\cap T_2)$
+\end{definition}
+
+\begin{definition}[Join]
+If $V_1\cap V_2=\emptyset$ then we define
+$G_1\Join G_2 = (V_1\cup V_2, E_1\cup E_2\cup E', T_1\cup T_2)$
+with $E'$ connecting vertices of the same type, i.e.,
+$E' = \{\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}|\tyv{v_1}{\tau_1}\in V_1\wedge\tyv{v_2}{\tau_2}\in V_2\wedge \tau_1=\tau_2\}$
+\end{definition}
+
+\begin{definition}[Negative join]
+If $V_1\cap V_2=\emptyset$ then we define
+$G_1\overline{\Join}G_2 = (V_1\cup V_2, E_1\cup E_2\cup E', T_1\cup T_2)$
+with $E'$ connecting vertices of different types, i.e.,
+$E' = \{\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}|\tyv{v_1}{\tau_1}\in V_1\wedge\tyv{v_2}{\tau_2}\in V_2\wedge \tau_1\neq\tau_2\}$
+\end{definition}
+
+\begin{prop}
+Let $G_1$,$G_2$
+be typed graphs and
+$H = \Re_{G_1}\overline{\Join}\Re_{G_2}$.
+$H \simeq \Re_H$.
+\end{prop}
+\begin{proof}
+Let $\Re_{G_1} = (V_1,E_1,T_1)$ and $\Re_{G_2} = (V_2,E_2,T_2)$.
+By definition we have
+$H = (V_1\cup V_2, E_1\cup E_2\cup E', T_1\cup T_2)$
+with
+$E' = \{\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}|\tyv{v_1}{\tau_1}\in V_1\wedge\allowbreak\tyv{v_2}{\tau_2}\in V_2\wedge \tau_1\neq\tau_2\}$.
+Since, by definition, $\forall E_i\in\{E_1,E_2,E'\}$,$\nexists \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E_i$ where $\tau_i=\tau_j$,
+therefore $H$ is in the reduced normal form.
+\end{proof}
+
+\begin{prop}
+Let $G_1 = (V_1,E_1,T)$ and $G_2 = (V_2,E_2,T)$
+be typed graphs with the same type-set and
+$H = G_1 \Join G_2$.
+For all $\tau\in T$, $\Re_H[\tau]$
+is a singleton graph of type $\tau$.
+\end{prop}
+\begin{proof}
+By definition, $\forall \tyv{v_1}{\tau_1}\in V_1$
+and $\forall \tyv{v_2}{\tau_2}\in V_2$,
+if $\tau_1=\tau_2$ then 
+$\tyv{v_1}{\tau_1}$ and
+$\tyv{v_2}{\tau_2}$ are adjacent in $H$.
+Therefore, $H[\tau]$ is a single
+homogeneous connected component in $H$.
+As proved in Theorem~\ref{theorem:ETCCequiv},
+the reduced normal form of a
+homogeneous connected component of type $\tau$ is
+a singleton graph of type $\tau$.
+\end{proof}
+
+\section{Properties of typed trees}
+
+In this section we study some properties of typed trees.
+Typed trees are special cases of typed graphs.
+A typed graph $G = (V,E,T)$ is a typed tree
+if $(V,E)$ is a tree.
+
+\begin{prop}
+Let $G = (V,E,T)$ be a perfect typed n-ary tree, i.e. every non-leaf vertex contains exactly $n$ children,
+of height $h$ and $|T| = k$.
+Considering that the types are randomly distributed amongst the vertices with a uniform probability.
+Let $B(r)$ be the set of all binary $r$-tuples $(b_1, b_2, \ldots, b_r)$,
+where $b_i\in\{0,1\}$ for all $b_i$.
+Therefore, the expected height of $\Re_G$ is
+\[
+h\left(1-\sum_{(x_0,x_1,\ldots,x_{h-1})\in B(h)} \prod_{i=0}^{h-1} x_i (\frac{1}{k})^{n^{i+1}}\right)
+\]
+\end{prop}
+\begin{proof}
+Given any vertex $\tyv{v}{\tau}$, the probability that all its $n$ children have
+the same type $\tau$ is $(\frac{1}{k})^n$.
+
+A reduction happens in a level $l$ of the typed tree if and only if all $n^l$ vertices 
+in level $l$ have all their respective children with the same type.
+Thus, the reduction happens in a level $l$ with probability
+\[
+P\{R_l\} = \Big(\Big(\frac{1}{k}\Big)^n\Big)^{n^l} = \Big(\frac{1}{k}\Big)^{n^{l+1}}
+\]
+
+Considering the function
+\[
+p(x_0, x_1, \ldots, x_{h-1}) = \prod_{i=0}^{h-1} x_i P\{R_i\}
+\]
+where $x_i\in\{0,1\}$ for all $x_i$.
+
+Therefore, the expected height of $\Re_G$ is
+\[
+h\left(1-\sum_{\mathbf{x}\in B(h)} p(\mathbf{x})\right)
+\]
+where $p(\mathbf{x})=p(x_0, x_1, \ldots, x_{h-1})$ for
+$\mathbf{x}=(x_0, x_1, \ldots, x_{h-1})\in B(h)$.
+\end{proof}
+
+
+\begin{prop}\label{prop:sizereducedclass4trees}
+Let $G = (V,E,T)$ be a typed tree in the reduced normal form.
+Using de definition of $\mathcal{G}^*(\tyv{v}{\tau})$, $\tyv{v}{\tau}\in V$,
+presented in Proposition~\ref{prop:sizereducedclass},
+consider $K \subseteq [G]_\equiv$ such that
+\[
+K \subseteq \{ \mathcal{S}^{{v_1}:{\tau_1}}_{H_1}|\mathcal{S}^{{v_2}:{\tau_2}}_{H_2}|\dots|\mathcal{S}^{{v_n}:{\tau_n}}_{H_n}|G
+             \,\,\,\,\,|\,\,\,   H_i\in\mathcal{G}^*(\tyv{v_i}{\tau_i}),\tyv{v_i}{\tau_i}\in V\}
+\]
+where $K$ contains only typed trees.
+Therefore
+\[
+\prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2} \leq |K| \leq \prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2}d(v:\tau)^{d(v:\tau)-2}
+\]
+\end{prop}
+\begin{proof}
+Let $d' = d(\tyv{v}{\tau})$.
+Again, notice that $\{S|P_P^*(S, \tyv{v}{\tau})\}$
+is the set of all
+valid partitions of the set $N(\tyv{v}{\tau})$
+into exactly $d'$ partitions, where some of the partitions may receive no
+element of $N(\tyv{v}{\tau})$. We can partition $N(\tyv{v}{\tau})$
+in a total of $\binom{d'}{2}$ different ways. Thus $|\{S|P_P^*(S, \tyv{v}{\tau})\}| = \binom{d'}{2}$.
+
+For any valid vertex-set $V'=\{\tyv{S'}{\tau}|S'\in S\}$, with $P_P^*(S, \tyv{v}{\tau})$ true,
+consider the subset $E''\subseteq \{E'| P_C(V',E',\tau)\}$ that represents the set of all edge-sets such that the corresponding graph is a tree.
+Since $|V'| \leq d'$, by using Cayley's formula~\cite{cayley1889}, 
+the number of trees on $d'$ vertices is $d'^{d'-2}$, i.e., $|E''| \leq d'^{d'-2}$.
+
+If we repeat this process for all vertices in $V$, considering only graphs that represent trees,
+we conclude that
+\[
+\prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2} \leq |K| \leq \prod_{v:\tau\in V} \binom{d(\tyv{v}{\tau})}{2}d(v:\tau)^{d(v:\tau)-2}
+\]
+\end{proof}
+
+%\begin{prop}
+%Let $G = (V,E,T)$ be a connected perfect typed n-ary tree of height $h$ in the reduced normal form,
+%i.e. every non-leaf vertex contains exactly $n$ children with no two
+%adjacent vertices of the same type.
+%$[G]$ be the equivalence class regarding the \textit{reduced form equivalence} relation.
+%Let us denote by $[G]*$ a subset of $[G]$ such that 
+%\end{prop}
+%\begin{proof}
+%\end{proof}
+
+%\subsection{Maximizing isomorphic typed sub-trees}
+
+%Let $G_1 = (V_1,E_1,T_1)$ and $G_2 = (V_2,E_2,T_2)$ be typed trees.
+%Let $H_1 = (V_1',E_1',T_1')$ be an induced rooted sub-tree of $G_1$, i.e. $V_1'\subset V_1$, $E_1'\subset E_1$ and $T_1'\in T_1$,
+%and similarly, $H_2 = (V_2',E_2',T_2')$ be an induced rooted sub-tree of $G_2$.
+%In this paper we consider the problem of maximizing the size of $H_1$ and $H_2$,
+%typed sub-trees of $G_1$ and $G_2$ in the reduced form, with $H_1$ isomorphic to $H_2$.
+%This problem generalises the problem of producing a SLP vectorization with maximum coverage.
+
+%\begin{figure}
+%\centering
+%\includegraphics{figs/normalize-tree.pdf}
+%\label{fig:normalize-tree}
+%\caption{Nomalizing trees}
+%\end{figure}
+
+%\section{Conclusions}
+%
+%As future work, we intend to work on typed graphs with multi-typed vertices.
+
+\section*{Acknowledgments}
+
+%\textbf{Acknowledge the partial support by EPSRC}.
+
+This work was supported by the UK Engineering
+and Physical Sciences Research Council (EPSRC) under grants
+EP/L01503X/1 for the University of Edinburgh, School
+of Informatics, Centre for Doctoral Training in Pervasive
+Parallelism (\url{http://pervasiveparallelism.inf.ed.ac.uk/}),
+and also by the Institute for Computing Systems Architecture (ICSA)
+in the School of Informatics at the University of Edinburgh.
+
+\section*{References}
+\bibliographystyle{elsarticle-num}
+\bibliography{refs}
+
+\end{document}
+
+%%
+%% End of file `elsarticle-template-1-num.tex'.
