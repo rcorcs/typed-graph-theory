@@ -319,11 +319,15 @@ and $H$ is a subgraph of $G$, then
 $H$ is in the reduced normal form.
 \end{theorem}
 \begin{proof}
-Let $G = (V,E,T)$ be a typed graph in the reduced normal form
-and $H = (V',E',T')$ such that $H \subgraph G$.
-By definition, $\nexists \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\} \in E$
-such that $\tau_i=\tau_j$.
-Because $E'\subseteq E$ we know that $H$ is also in the reduced normal form.
+%Let $G = (V,E,T)$ be a typed graph in the reduced normal form
+%and $H = (V',E',T')$ such that $H \subgraph G$.
+%By definition, $\nexists \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\} \in E$
+%such that $\tau_i=\tau_j$.
+%Because $E'\subseteq E$ we know that $H$ is also in the reduced normal form.
+Suppose $H$ is not in the reduced normal form, then there is
+an edge $\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}$ in the edge-set of $H$,
+with $\tau_i=\tau_j$, which is a contradiction because $\{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}$
+is also in the edge-set of $G$, which is in the reduced normal form.
 \end{proof}
 
 \begin{definition}[Homogeneous connected components]\label{def:connectedcomponent}
@@ -366,7 +370,8 @@ If $G'$ and $G''$ are reduced normal forms of a typed graph $G$,
 $G' \simeq G''$.
 \end{corollary}
 \begin{proof}
-Follows immediately from Theorem~\ref{theorem:ETCCequiv}.
+Follows immediately from Theorem~\ref{theorem:ETCCequiv} and also from the fact
+that the set of equivalence classes of an equivalence relation is uniquely defined.
 \end{proof}
 
 \begin{definition}[Reduced form equivalence]
@@ -400,7 +405,7 @@ The first predicate, $P_P(S, \tyv{v}{\tau})$, defines a set $S$ that is a valid 
 the set of vertices adjacent to $\tyv{v}{\tau}$.
 \begin{equation*}
 \begin{split}
-P_P(S, \tyv{v}{\tau}): &[\forall S'\in S, S'\neq\emptyset \wedge 
+P_P(S, \tyv{v}{\tau}): &[\forall S'\in S, S'\neq\emptyset \implies 
   \nexists S''\neq S' \in S, S'\cap S''\neq\emptyset]\wedge \\
   &[\forall \tyv{v'}{\tau'}\in N(\tyv{v}{\tau}), \exists S'\in S, \tyv{v'}{\tau'}\in S'].
 \end{split}
