@@ -215,13 +215,13 @@ however, these concepts can be easily extended to directed graphs.
 Let $T$ be a non-empty set of types
 and let $L$ be a set of labels\footnote{Usually we can consider that $L$ is the set of
 natural number $\mathbf{N}$.}.
-We say that $G = (V,E,T)$ is a typed graph if $(V,E)$ is a graph with
-vertex-set $V \subseteq L\times T$ and edge-set $E \subseteq V\times V$.
+We say that $G = (V,E,T)$ is a typed graph %if $(V,E)$ is a graph
+with vertex-set $V \subseteq L\times T$ and edge-set $E \subseteq V\times V$.
 \end{definition}
 
 We will denote vertices $(v_1, \tau_1) \in V$ by $\tyv{v_1}{\tau_1}$ and edges by $\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}$.
 Notice that two distinct vertices $\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2} \in V$ have $v_1 \neq v_2$ but their types $\tau_1$ and $\tau_2$ can be the same.
-A homogeneous graph $G$ of type $\tau$ is a typed graph $G = (V,E,T)$ where $T = \{\tau\}$ and therefore all vertices in $V$ have type $\tau$.
+A \textit{homogeneous} graph $G$ of type $\tau$ is a typed graph $G = (V,E,T)$ where $T = \{\tau\}$ and therefore all vertices in $V$ have type $\tau$.
 Similarly, a \textit{singleton} graph of type $\tau$ is a graph defined as $G = (\{\tyv{v}{\tau}\}, \emptyset, \{\tau\})$.
 Graphs in classic graph theory are equivalent to homogeneous typed graphs and thus just special cases of typed graphs.
 %This type system, described as typed vertices, creates useful
@@ -236,7 +236,7 @@ if and only if $V_2 \subseteq V_1$,
 $E_2 \subseteq E_1$ and $T_2 \subseteq T_1$.
 \end{definition}
 
-Similar to the definitions of vertex-induced subgraph and
+Similar to the definitions of vertex-induced subgraph and 
 edge-induced subgraph, we also define \textit{type-induced subgraph},
 see Definition~\ref{def:typeindsubgraph}.
 
@@ -251,14 +251,26 @@ and
 $E' = \{\{\tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\}\in E| \tyv{v_1}{\tau_1}, \tyv{v_2}{\tau_2}\in V'\}$.
 \end{definition}
 
+%\begin{definition}[Isomorphism]
+%Let $G_1 = (V_1,E_1,T_1)$ and $G_2 = (V_2,E_2,T_2)$ be typed graphs,
+%with $V_1 \subseteq L_1\times T_1$ and $V_2 \subseteq L_2\times T_2$.
+%The two typed graphs $G_1$ and $G_2$ are isomorphic, denoted $G_1 \simeq G_2$,
+%if and only if there are bijections $\phi:L_1 \rightarrow L_2$ and $\psi:T_1 \rightarrow T_2$
+%such that
+%$V_2 = \{\tyv{\phi(v_i)}{\psi(\tau_i)}|\tyv{v_i}{\tau_i}\in V_1\}$ and
+%%%$\forall \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E_1, \{\tyv{\phi(v_i)}{\psi(\tau_i)}, \tyv{\phi(v_j)}{\psi(\tau_j)}\}\in E_2$.
+%$E_2 = \{ \{\tyv{\phi(v_i)}{\psi(\tau_i)}, \tyv{\phi(v_j)}{\psi(\tau_j)}\} | \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E_1 \}$.
+%\end{definition}
+
+
 \begin{definition}[Isomorphism]
 Let $G_1 = (V_1,E_1,T_1)$ and $G_2 = (V_2,E_2,T_2)$ be typed graphs,
 with $V_1 \subseteq L_1\times T_1$ and $V_2 \subseteq L_2\times T_2$.
 The two typed graphs $G_1$ and $G_2$ are isomorphic, denoted $G_1 \simeq G_2$,
-if and only if there are bijections $\phi:L_1 \rightarrow L_2$ and $\psi:T_1 \rightarrow T_2$
+if and only if there is a bijection $\phi:L_1 \times T_1 \rightarrow L_2 \times T_2 $
 such that
-$V_2 = \{\tyv{\phi(v_i)}{\psi(\tau_i)}|\tyv{v_i}{\tau_i}\in V_1\}$ and
-$\forall \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E_1,\{\tyv{\phi(v_i)}{\psi(\tau_i)}, \tyv{\phi(v_j)}{\psi(\tau_j)}\}\in E_2$.
+$V_2 = \{{\phi(v_i,\tau_i)}|\tyv{v_i}{\tau_i}\in V_1\}$ and
+$E_2 = \{ \{{\phi(v_i,\tau_i)}, {\phi(v_j,\tau_j)}\} | \{\tyv{v_i}{\tau_i}, \tyv{v_j}{\tau_j}\}\in E_1 \}$.
 \end{definition}
 
 Whilst both vertex and edge deletion are type-independent operations,
